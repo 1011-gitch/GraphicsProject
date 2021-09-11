@@ -1,0 +1,44 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: "border-box";
+}
+h2 {
+  font-size: 72px;
+  background: -webkit-linear-gradient(#32a89d, #c21f73);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: underline rgb(121, 28, 106);
+}
+.main {
+  display: flex;
+  align-items: center;
+  height: 200px;
+  width: 500px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px 50px;
+  margin: auto;
+  margin-bottom: 10px;
+}
+.score {
+  display: flex;
+}
+.score-area {
+  margin-left: auto;
+  margin-top: 100px;
+  border: 1px solid black;
+  width: 25%;
+  height: 30px;
+  position: absolute;
+  padding: 0 10px;
+}
+.high-score-area {
+  margin-left: auto;
+  margin-top: 100px;
+  border: 1px solid black;
+  width: 25%;
+  height: 30px;
+  padding: 0 10px;
+}
