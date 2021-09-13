@@ -3,42 +3,103 @@
   padding: 0;
   box-sizing: "border-box";
 }
-h2 {
-  font-size: 72px;
-  background: -webkit-linear-gradient(#32a89d, #c21f73);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-decoration: underline rgb(121, 28, 106);
+body {
+  background-color: aquamarine;
+}
+#heading {
+  font-size: 50px;
+  text-align: center;
+  color: #ccff00;
+  font-family: "Patua One", cursive;
+  margin: 20px;
+  margin-left: 160px;
+}
+h3 {
+  text-align: center;
+  font-family: "Patua One", cursive;
 }
 .main {
+  font-family: "Bree Serif", serif;
+  font-family: "Patua One", cursive;
+  color: white;
+  font-size: 25px;
+  position: relative;
+  left: 100px;
+  background-color: rgb(50 88 136 / 80%);
   display: flex;
   align-items: center;
-  height: 200px;
-  width: 500px;
-  border: 1px solid black;
+  height: 300px;
+  width: 600px;
+  border: 2px solid rgb(141, 190, 192);
   border-radius: 10px;
   padding: 10px 50px;
   margin: auto;
   margin-bottom: 10px;
+  box-shadow: 2px 2px 6px 10px #618bd78f, -4px -4px 8px 4px #29516363;
 }
-.score {
-  display: flex;
+.section {
+  margin: auto;
+  margin-left: 500px;
+  display: block;
+  width: 40%;
+}
+.ready {
+  text-align: center;
+  color: rgb(42, 253, 0);
+  font-size: 25px;
+  font-family: "Bree Serif", serif;
 }
 .score-area {
-  margin-left: auto;
-  margin-top: 100px;
-  border: 1px solid black;
-  width: 25%;
-  height: 30px;
-  position: absolute;
-  padding: 0 10px;
+  font-weight: bold;
+  background-color: #2cca6b;
+  box-shadow: 3px 4px 3px 5px #1cb14a, 3px 4px 4px 6px #abbd18;
+  border: 1px solid white;
+  border-radius: 8px;
+  font-size: 25px;
+  width: 20%;
+  height: 40px;
+  position: relative;
+  margin: 0%;
+  top: 140px;
+  left: 10px;
+  padding: 1px 6px 5px 25px;
+  text-align: center;
+  justify-content: center;
 }
 .high-score-area {
-  margin-left: auto;
-  margin-top: 100px;
-  border: 1px solid black;
-  width: 25%;
-  height: 30px;
-  padding: 0 10px;
+  font-weight: bold;
+  background-color: #2cca6b;
+  box-shadow: 3px 4px 3px 5px #1cb14a, 3px 4px 4px 6px #abbd18;
+  border: 1px solid white;
+  border-radius: 8px;
+  font-size: 25px;
+  position: relative;
+  left: 76%;
+  width: 20%;
+  top: 100px;
+  height: 40px;
+  padding: 1px 6px 5px 25px;
+  text-align: center;
+}
+.GameOver {
+  font-weight: bold;
+  box-shadow: 3px 4px 3px 5px #1cb14a, 3px 4px 4px 6px #abbd18;
+  border: 1px solid white;
+  border-radius: 8px;
+  font-size: 25px;
+  position: absolute;
+  width: 20%;
+  left: 40%;
+  right: 50%;
+  top: 800px;
+  padding: 1px 6px 5px 25px;
+  background-color: rgb(221, 14, 14);
+  font-family: "Bree Serif", serif;
+  text-align: center;
+  color: white;
+  display: none;
+}
+#scr1,
+#scr2 {
+  color: white;
 }

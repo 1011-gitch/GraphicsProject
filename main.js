@@ -35,6 +35,7 @@ const scene = new THREE.Scene();
 let infoElement;
 let YourScore = document.querySelector(".score-area");
 let HighScore = document.querySelector(".high-score-area");
+const Gameover = document.querySelector(".GameOver");
 const clock = new THREE.Clock();
 const mixers = [];
 let trex;
@@ -53,6 +54,15 @@ const cactusGroup = new THREE.Group();
 scene.add(cactusGroup);
 let renderer;
 let camera;
+
+function changeBackgroundImage() {
+  document.body.style.backgroundImage = "url('trex-1.jpg')";
+  document.body.style.backgroundRepeat = "no-repeat";
+  document.body.style.backgroundSize = "cover";
+}
+window.addEventListener("load", function () {
+  changeBackgroundImage();
+});
 
 const get_High_score = localStorage.getItem("HighScore");
 HighScore.innerHTML = "High-Score-" + get_High_score;
@@ -250,16 +260,29 @@ function enableShadow(renderer, light) {
 enableShadow(renderer, directionalLight);
 
 function handleInput() {
+  Gameover.style.display = "none";
   const callback = () => {
-    if (isGameOver) {
-      restartGame();
+    if (!isGameOver) {
+      Gameover.style.display = "none";
+      jump = true;
+    } else {
+      setTimeout(() => {
+        restartGame();
+      }, 500);
+      //jump=true;
       return;
     }
-
-    jump = true;
   };
 
-  document.addEventListener("keydown", callback, false);
+  document.addEventListener(
+    "keypress",
+    (event) => {
+      if (event.code === "Space") {
+        callback();
+      }
+    },
+    false
+  );
   renderer.domElement.addEventListener("touchstart", callback);
   renderer.domElement.addEventListener("click", callback);
 }
@@ -267,12 +290,14 @@ handleInput();
 
 function handleWindowResize() {
   window.addEventListener(
-    "resize",
-    () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
+    "keypress",
+    (event) => {
+      if (event.code === "Space") {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
 
-      renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      }
     },
     true
   );
@@ -291,9 +316,11 @@ function gameOver() {
   isGameOver = true;
   const high_score = Math.floor(score).toString().padStart(5, "0");
   const get_score = localStorage.getItem("HighScore");
-
+  Gameover.style.display = "block";
   if (high_score > get_score) {
     localStorage.setItem("HighScore", high_score);
+    Gameover.style.backgroundColor = "green";
+    Gameover.innerHTML = "Congrats! New HighScore";
   }
   YourScore.innerHTML = `Your Score-${high_score}`;
 }
@@ -301,7 +328,7 @@ function gameOver() {
 function restartGame() {
   isGameOver = false;
   score = 0;
-
+  Gameover.style.display = "none";
   respawnPterodactyl();
 
   cactusGroup.children.length = 0;
@@ -379,7 +406,7 @@ function update(delta) {
   // Check collision.
   const trexAABB = new THREE.Box3(
     new THREE.Vector3(-1, trex.position.y, 0),
-    new THREE.Vector3(1, trex.position.y + 2, 0)
+    new THREE.Vector3(1, trex.position.y + 1, 0)
   );
 
   for (const cactus of cactusGroup.children) {
