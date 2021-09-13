@@ -81,7 +81,8 @@ h3 {
   padding: 1px 6px 5px 25px;
   text-align: center;
 }
-.GameOver {
+.GameOver,
+.Gamewin {
   font-weight: bold;
   box-shadow: 3px 4px 3px 5px #1cb14a, 3px 4px 4px 6px #abbd18;
   border: 1px solid white;

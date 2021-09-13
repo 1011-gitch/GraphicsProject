@@ -36,6 +36,7 @@ let infoElement;
 let YourScore = document.querySelector(".score-area");
 let HighScore = document.querySelector(".high-score-area");
 const Gameover = document.querySelector(".GameOver");
+const Gamewin = document.querySelector(".Gamewin");
 const clock = new THREE.Clock();
 const mixers = [];
 let trex;
@@ -261,9 +262,11 @@ enableShadow(renderer, directionalLight);
 
 function handleInput() {
   Gameover.style.display = "none";
+  Gamewin.style.display = "none";
   const callback = () => {
     if (!isGameOver) {
       Gameover.style.display = "none";
+      Gamewin.style.display = "none";
       jump = true;
     } else {
       setTimeout(() => {
@@ -316,11 +319,13 @@ function gameOver() {
   isGameOver = true;
   const high_score = Math.floor(score).toString().padStart(5, "0");
   const get_score = localStorage.getItem("HighScore");
+
   Gameover.style.display = "block";
   if (high_score > get_score) {
     localStorage.setItem("HighScore", high_score);
-    Gameover.style.backgroundColor = "green";
-    Gameover.innerHTML = "Congrats! New HighScore";
+    Gameover.style.display = "none";
+    Gamewin.style.backgroundColor = "green";
+    Gamewin.style.display = "block";
   }
   YourScore.innerHTML = `Your Score-${high_score}`;
 }
@@ -329,6 +334,7 @@ function restartGame() {
   isGameOver = false;
   score = 0;
   Gameover.style.display = "none";
+  Gamewin.style.display = "none";
   respawnPterodactyl();
 
   cactusGroup.children.length = 0;
